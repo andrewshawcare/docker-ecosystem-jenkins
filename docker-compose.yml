@@ -2,8 +2,17 @@ version: '2'
 services:
   jenkins:
     build: .
+    environment:
+      - REGISTRY_HOST=localhost:5000
+      - GIT_CREDENTIALS_ID
+      - GIT_CREDENTIALS_DESCRIPTION
+      - GIT_CREDENTIALS_USERNAME
+      - GIT_CREDENTIALS_PASSWORD
     ports:
       - '8080:8080'
-      - '50000:50000'
     volumes:
-      - './volumes/var/jenkins_home:/var/jenkins_home'
+      - /var/run/docker.sock:/var/run/docker.sock
+  registry:
+    image: registry:2
+    ports:
+      - '5000:5000'
