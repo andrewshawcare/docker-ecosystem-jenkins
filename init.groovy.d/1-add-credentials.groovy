@@ -2,7 +2,7 @@ import com.cloudbees.plugins.credentials.impl.*;
 import com.cloudbees.plugins.credentials.*;
 import com.cloudbees.plugins.credentials.domains.*;
 
-Credentials credentials = (Credentials) new UsernamePasswordCredentialsImpl(
+final Credentials credentials = (Credentials) new UsernamePasswordCredentialsImpl(
   CredentialsScope.GLOBAL,
   System.getenv('GIT_CREDENTIALS_ID'),
   System.getenv('GIT_CREDENTIALS_DESCRIPTION'),

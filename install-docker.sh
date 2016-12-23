@@ -14,6 +14,3 @@ echo 'deb https://apt.dockerproject.org/repo debian-jessie main' > /etc/apt/sour
 apt-get update -y
 apt-cache policy docker-engine
 apt-get install -y docker-engine
-
-groupadd --force docker
-usermod -aG docker jenkins

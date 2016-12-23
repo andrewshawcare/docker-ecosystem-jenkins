@@ -38,7 +38,7 @@ def generateProjectXml = { final Map<String, Object> project ->
         <userRemoteConfigs>
           <hudson.plugins.git.UserRemoteConfig>
             <url>${project.gitRepositoryUrl}</url>
-            <credentialsId>${System.getenv('GIT_CREDENTIALS_ID')}</credentialsId>
+            <credentialsId>${project.gitCredentialsId}</credentialsId>
           </hudson.plugins.git.UserRemoteConfig>
         </userRemoteConfigs>
         <branches>
@@ -59,18 +59,22 @@ def generateProjectXml = { final Map<String, Object> project ->
 
 final Map<String, ByteArrayInputStream> projects = [
   'docker-ecosystem-migration': generateProjectXml(
-    gitRepositoryUrl: 'https://github.com/andrewshawcare/docker-ecosystem-migration.git'
+    gitRepositoryUrl: 'https://github.com/andrewshawcare/docker-ecosystem-migration.git',
+    gitCredentialsId: System.getenv('GIT_CREDENTIALS_ID')
   ),
   'docker-ecosystem-node-service': generateProjectXml(
     gitRepositoryUrl: 'https://github.com/andrewshawcare/docker-ecosystem-node-service.git',
+    gitCredentialsId: System.getenv('GIT_CREDENTIALS_ID'),
     upstreamProjectNameList: ['docker-ecosystem-migration']
   ),
   'docker-ecosystem-java-service': generateProjectXml(
     gitRepositoryUrl: 'https://github.com/andrewshawcare/docker-ecosystem-java-service.git',
+    gitCredentialsId: System.getenv('GIT_CREDENTIALS_ID'),
     upstreamProjectNameList: ['docker-ecosystem-migration']
   ),
   'docker-ecosystem-client': generateProjectXml(
     gitRepositoryUrl: 'https://github.com/andrewshawcare/docker-ecosystem-client.git',
+    gitCredentialsId: System.getenv('GIT_CREDENTIALS_ID'),
     upstreamProjectNameList: ['docker-ecosystem-node-service', 'docker-ecosystem-java-service']
   )
 ]

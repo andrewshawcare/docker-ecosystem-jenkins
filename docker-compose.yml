@@ -1,4 +1,6 @@
 version: '2'
+volumes:
+  var_jenkins_home:
 services:
   jenkins:
     build: .
@@ -11,6 +13,7 @@ services:
     ports:
       - '8080:8080'
     volumes:
+      - var_jenkins_home:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
   registry:
     image: registry:2
