@@ -5,7 +5,7 @@ A Jenkins deployment with docker-compose-enabled nodes and some sample projects
 
 ### Prerequisites
 
-The following environment variables need to be set in `docker-compose.yml` before running this project:
+The following environment variables need to be defined in the running terminal session or in `docker-compose.yml` before running this project:
 
 * `GIT_CREDENTIALS_ID`: An arbitrary identifier for the Jenkins git credentials
 * `GIT_CREDENTIALS_DESCRIPTION`: (Optional) A human-readable description for the Jenkins git credentials
