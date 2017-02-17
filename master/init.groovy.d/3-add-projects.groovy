@@ -43,14 +43,14 @@ def generateProjectXml = { final Map<String, Object> project ->
         </userRemoteConfigs>
         <branches>
           <hudson.plugins.git.BranchSpec>
-            <name>*/master</name>
+            <name>*/${project.branch ?: 'master'}</name>
           </hudson.plugins.git.BranchSpec>
         </branches>
         <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
         <submoduleCfg class="list"/>
         <extensions/>
       </scm>
-      <scriptPath>Jenkinsfile</scriptPath>
+      <scriptPath>${project.jenkinsfilePath ?: 'Jenkinsfile'}</scriptPath>
     </definition>
     <triggers/>
   </flow-definition>"""

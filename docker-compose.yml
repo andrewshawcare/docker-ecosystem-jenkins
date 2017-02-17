@@ -2,19 +2,23 @@ version: '2'
 volumes:
   var_jenkins_home:
 services:
-  jenkins:
-    build: .
+  master:
+    build: ./master
     environment:
-      - REGISTRY_HOST=localhost:5000
-      - GIT_CREDENTIALS_ID
-      - GIT_CREDENTIALS_DESCRIPTION
       - GIT_CREDENTIALS_USERNAME
       - GIT_CREDENTIALS_PASSWORD
     ports:
       - '8080:8080'
     volumes:
       - var_jenkins_home:/var/jenkins_home
+  slave:
+    build: ./slave
+    environment:
+      - REGISTRY_HOST=localhost:5000
+    volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    links:
+      - master
   registry:
     image: registry:2
     ports:
