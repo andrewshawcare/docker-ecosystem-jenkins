@@ -1,1 +1,4 @@
-blueocean:1.0.0-b23
+blueocean:1.0.0
+workflow-aggregator:2.5
+github-organization-folder:1.6
+pipeline-stage-view:2.6
