@@ -5,20 +5,29 @@ A Jenkins deployment with docker-compose-enabled nodes and some sample projects
 
 ### Setup
 
-The `export-secrets.sh` script will use files in the .gitignored `environment` folder to export environment variables. By convention, file names will be the environment variable keys and file contents will be the environment variable values.
-
-As an example, a file named, FOO with file contents:
-
-bar
-
-Will export the following environment variable:
-
-FOO=bar
+#### Environment variables
 
 The following environment variables are required for this project:
 
-GIT_CREDENTIALS_USERNAME: Your GitHub username
-GIT_CREDENTIALS_PASSWORD: Your GitHub password
+* GIT_CREDENTIALS_USERNAME: Your GitHub username
+* GIT_CREDENTIALS_PASSWORD: Your GitHub password (or personal token)
+
+For convenience, `export-environment-variables.sh` will create and export
+environment variables using files in the `environment` folder. This folder is
+excluded from the repository using `.gitignore`, so you can add sensitive
+environment variables here.
+
+For example, a file named `FOO` with file contents:
+
+```
+bar
+```
+
+Will result in the following environment variable:
+
+`FOO=bar`
+
+#### Docker
 
 This project is deployed with Docker. The easiest way to setup a Docker environment is by installing the [Docker Toolbox](https://www.docker.com/docker-toolbox).
 

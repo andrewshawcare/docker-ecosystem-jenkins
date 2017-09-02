@@ -1,4 +1,4 @@
-FROM jenkins:2.46.1
+FROM jenkins/jenkins
 
 USER root
 
