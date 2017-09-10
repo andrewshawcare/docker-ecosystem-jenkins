@@ -5,7 +5,6 @@
   <remoteFS>/var/jenkins</remoteFS>
   <numExecutors>1</numExecutors>
   <mode>NORMAL</mode>
-  <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
   <launcher class="hudson.slaves.JNLPLauncher"/>
   <nodeProperties/>
   <userId>SYSTEM</userId>

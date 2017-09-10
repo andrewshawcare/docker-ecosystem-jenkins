@@ -10,9 +10,21 @@ envsubst < node.xml.template > node.xml
 
 while sleep 10
 do
-  curl "http://${JENKINS_MASTER_HOST}:${JENKINS_MASTER_PORT}/jnlpJars/jenkins-cli.jar" --output jenkins-cli.jar
-  cat node.xml | java -jar jenkins-cli.jar -s "http://${JENKINS_MASTER_HOST}:${JENKINS_MASTER_PORT}" create-node "${NAME}"
+  curl \
+    "http://${JENKINS_MASTER_HOST}:${JENKINS_MASTER_PORT}/jnlpJars/jenkins-cli.jar" \
+    --output jenkins-cli.jar
 
-  curl "http://${JENKINS_MASTER_HOST}:${JENKINS_MASTER_PORT}/jnlpJars/slave.jar" --output slave.jar
-  java -jar slave.jar -jnlpUrl "http://${JENKINS_MASTER_HOST}:${JENKINS_MASTER_PORT}/computer/${NAME}/slave-agent.jnlp"
+  cat node.xml | \
+  java \
+    -jar jenkins-cli.jar \
+    -s "http://${JENKINS_MASTER_HOST}:${JENKINS_MASTER_PORT}" \
+    create-node "${NAME}"
+
+  curl \
+    "http://${JENKINS_MASTER_HOST}:${JENKINS_MASTER_PORT}/jnlpJars/slave.jar" \
+    --output slave.jar
+
+  java \
+    -jar slave.jar \
+    -jnlpUrl "http://${JENKINS_MASTER_HOST}:${JENKINS_MASTER_PORT}/computer/${NAME}/slave-agent.jnlp"
 done
