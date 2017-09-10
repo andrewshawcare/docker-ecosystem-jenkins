@@ -7,6 +7,8 @@ services:
     environment:
       - GIT_CREDENTIALS_USERNAME
       - GIT_CREDENTIALS_PASSWORD
+      - JENKINS_ADMINISTRATOR_USERNAME
+      - JENKINS_ADMINISTRATOR_PASSWORD
     ports:
       - '8080:8080'
     volumes:

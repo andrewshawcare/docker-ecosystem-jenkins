@@ -11,6 +11,8 @@ The following environment variables are required for this project:
 
 * GIT_CREDENTIALS_USERNAME: Your GitHub username
 * GIT_CREDENTIALS_PASSWORD: Your GitHub password (or personal token)
+* JENKINS_ADMINISTRATOR_USERNAME: The Jenkins administrator username
+* JENKINS_ADMINISTRATOR_PASSWORD: The Jenkins administrator password
 
 For convenience, `export-environment-variables.sh` will create and export
 environment variables using files in the `environment` folder. This folder is
