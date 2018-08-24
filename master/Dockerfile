@@ -1,10 +1,8 @@
 FROM jenkins/jenkins
 
-USER root
+ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
 COPY ./plugins.txt /usr/share/jenkins/plugins.txt
 RUN cat /usr/share/jenkins/plugins.txt | xargs /usr/local/bin/install-plugins.sh
 
-USER jenkins
-
-COPY ./init.groovy.d/ /var/jenkins_home/init.groovy.d/
+COPY --chown=jenkins:jenkins ./init.groovy.d/ /usr/share/jenkins/ref/init.groovy.d/

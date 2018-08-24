@@ -1,6 +1,4 @@
-version: '2'
-volumes:
-  var_jenkins_home:
+version: '3'
 services:
   master:
     build: ./master
@@ -11,8 +9,6 @@ services:
       - JENKINS_ADMINISTRATOR_PASSWORD
     ports:
       - '8080:8080'
-    volumes:
-      - var_jenkins_home:/var/jenkins_home
   slave:
     build: ./slave
     environment:

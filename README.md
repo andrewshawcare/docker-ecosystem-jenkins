@@ -41,4 +41,4 @@ source ./export-environment-variables.sh && docker-compose up
 
 ## Jenkins Dashboard
 
-1. Go to `http://$(docker-machine ip):8080` in your browser.
+1. Go to `http://localhost:8080` in your browser.
