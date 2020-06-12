@@ -1,4 +1,5 @@
 # docker-ecosystem-jenkins
+
 A Jenkins deployment with docker-compose-enabled nodes and some sample projects
 
 ## Deployment
@@ -9,25 +10,20 @@ A Jenkins deployment with docker-compose-enabled nodes and some sample projects
 
 The following environment variables are required for this project:
 
-* GIT_CREDENTIALS_USERNAME: Your GitHub username
-* GIT_CREDENTIALS_PASSWORD: Your GitHub password (or personal token)
-* JENKINS_ADMINISTRATOR_USERNAME: The Jenkins administrator username
-* JENKINS_ADMINISTRATOR_PASSWORD: The Jenkins administrator password
+- GIT_CREDENTIALS_USERNAME: Your GitHub username
+- GIT_CREDENTIALS_PASSWORD: Your GitHub password (or personal token)
+- JENKINS_ADMINISTRATOR_USERNAME: The Jenkins administrator username
+- JENKINS_ADMINISTRATOR_PASSWORD: The Jenkins administrator password
 
-For convenience, `export-environment-variables.sh` will create and export
-environment variables using files in the `environment` folder. This folder is
-excluded from the repository using `.gitignore`, so you can add sensitive
-environment variables here.
+For convenience, an `.env.template` file has been included in the repository with the required placeholders.
 
-For example, a file named `FOO` with file contents:
+Copy the template:
 
-```
-bar
+```bash
+cp .env.template .env
 ```
 
-Will result in the following environment variable:
-
-`FOO=bar`
+And populate the variables with appropriate values. Docker Compose will use that file to ensure the container has the required variables.
 
 #### Docker
 
@@ -36,7 +32,7 @@ This project is deployed with Docker. The easiest way to setup a Docker environm
 ### Running
 
 ```bash
-source ./export-environment-variables.sh && docker-compose up
+export $(cat .env | xargs) && docker-compose up
 ```
 
 ## Jenkins Dashboard

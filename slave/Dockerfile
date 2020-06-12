@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:buster
 
 COPY ./install-docker-compose.sh .
 COPY ./install-docker.sh .

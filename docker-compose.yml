@@ -1,14 +1,15 @@
-version: '3'
+version: "3"
 services:
   master:
     build: ./master
+    env_file: .env
     environment:
       - GIT_CREDENTIALS_USERNAME
       - GIT_CREDENTIALS_PASSWORD
       - JENKINS_ADMINISTRATOR_USERNAME
       - JENKINS_ADMINISTRATOR_PASSWORD
     ports:
-      - '8080:8080'
+      - "8080:8080"
   slave:
     build: ./slave
     environment:
@@ -20,4 +21,4 @@ services:
   registry:
     image: registry:2
     ports:
-      - '5000:5000'
+      - "5000:5000"
